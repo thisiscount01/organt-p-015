@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wave Defender</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- Title Screen -->
+    <div id="screen-title" class="screen active">
+      <div class="title-content">
+        <h1 class="game-title">WAVE<br><span>DEFENDER</span></h1>
+        <p class="subtitle">생존하라. 파괴하라. 강해져라.</p>
+        <button id="btn-start" class="btn-primary">게임 시작</button>
+        <div class="controls-hint">
+          <span>WASD / 방향키 이동</span>
+          <span>마우스 조준 · 클릭 발사</span>
+        </div>
+        <div id="title-best" class="best-score-label hidden">Best: <span id="title-best-val">0</span></div>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="screen-game" class="screen">
+      <div id="hud">
+        <div id="hud-left">
+          <div id="hud-wave">WAVE <span id="wave-num">1</span></div>
+          <div id="hud-enemies">적: <span id="enemy-count">0</span></div>
+        </div>
+        <div id="hud-center">
+          <div id="hud-score">SCORE <span id="score-val">0</span></div>
+        </div>
+        <div id="hud-right">
+          <div id="hud-hp">
+            <span class="hp-icon" id="hp-1">♥</span>
+            <span class="hp-icon" id="hp-2">♥</span>
+            <span class="hp-icon" id="hp-3">♥</span>
+          </div>
+        </div>
+      </div>
+      <canvas id="game-canvas"></canvas>
+      <div id="wave-announce" class="wave-announce hidden">
+        <span id="wave-announce-text"></span>
+      </div>
+      <!-- V-6, V-7: 모바일 조이스틱 (@media hover:none coarse 에서만 표시) -->
+      <div id="joystick-zone">
+        <div id="joystick-base">
+          <div id="joystick-handle"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Powerup Screen -->
+    <div id="screen-powerup" class="screen">
+      <div class="powerup-content">
+        <div class="powerup-glow-ring"></div>
+        <h2 class="powerup-title">웨이브 클리어!</h2>
+        <p class="powerup-subtitle">파워업을 선택하세요</p>
+        <div id="powerup-cards" class="powerup-cards"></div>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="screen-gameover" class="screen">
+      <div class="gameover-content">
+        <h2 class="gameover-title">GAME OVER</h2>
+        <div class="gameover-stats">
+          <div class="stat-row">
+            <span>최종 점수</span>
+            <span id="final-score">0</span>
+          </div>
+          <div class="stat-row">
+            <span>도달 웨이브</span>
+            <span id="final-wave">0</span>
+          </div>
+          <div class="stat-row">
+            <span>처치한 적</span>
+            <span id="final-kills">0</span>
+          </div>
+          <div class="stat-row stat-row-best">
+            <span>최고 점수</span>
+            <span id="best-score-val">0</span>
+          </div>
+        </div>
+        <button id="btn-restart" class="btn-primary">다시 시작</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flash overlay for hit feedback -->
+  <div id="flash-overlay"></div>
+  <!-- Glow overlay for powerup feedback -->
+  <div id="glow-overlay"></div>
+  <!-- Pause overlay -->
+  <div id="pause-overlay">
+    <div class="pause-content">
+      <h2>PAUSED</h2>
+      <p>ESC to resume</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
